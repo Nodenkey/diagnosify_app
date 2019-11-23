@@ -63,7 +63,7 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 Image.asset(
-                  'assets/images/diag_logo_2.png',
+                  'assets/images/logo.png',
                   width: 60,
                   height: 60,
                 )
