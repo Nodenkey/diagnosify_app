@@ -62,9 +62,11 @@ class _LoginState extends State<Login> {
                     color: Colors.blue,
                   ),
                 ),
-                FlutterLogo(
-                  size: 50,
-                ),
+                Image.asset(
+                  'assets/images/diag_logo_2.png',
+                  width: 60,
+                  height: 60,
+                )
               ],
             ),
           ),
