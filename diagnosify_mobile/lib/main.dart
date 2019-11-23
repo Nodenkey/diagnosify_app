@@ -3,6 +3,7 @@ import 'package:diagnosify2/pages/login.dart';
 import 'package:diagnosify2/pages/onBoarding.dart';
 import 'package:diagnosify2/pages/signUpChoice.dart';
 import 'package:diagnosify2/pages/signup.dart';
+import 'package:diagnosify2/pages/yet_to.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -27,6 +28,7 @@ class _MyAppState extends State<MyApp> {
           '/loginPage': (BuildContext context) => Login(),
           '/signupPage': (BuildContext context) => Signup(),
           '/dashboard': (BuildContext context) => Dashboard(),
+          '/update': (BuildContext context) => Update(),
 //          '/loader': (BuildContext context) => Loader(),
         });
   }
