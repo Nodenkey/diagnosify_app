@@ -13,11 +13,14 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  PageController _pageController = PageController(initialPage: 0);
   int currentIndex = 0;
 
   void changePage(int index) {
     setState(() {
       currentIndex = index;
+      _pageController.animateToPage(index,
+          duration: Duration(milliseconds: 400), curve: Curves.ease);
     });
   }
 
@@ -131,21 +134,31 @@ class _DashboardState extends State<Dashboard> {
           ),
         ],
       ),
-      body: ListView(
-        physics: AlwaysScrollableScrollPhysics(),
-        padding: EdgeInsets.all(30.0),
+      body: PageView(
+        scrollDirection: Axis.horizontal,
+        physics: ClampingScrollPhysics(),
+        controller: _pageController,
+        onPageChanged: (int index) {
+          setState(() {
+            currentIndex = index;
+          });
+        },
         children: <Widget>[
-          CustomCard(
-              topic: '12 of the best hip strenghtening exercises',
-              subTopic:
-                  "The hips are one of those body parts that most of us don't really think about until "
-                  "they're...",
-              pic: 'assets/images/run.jpg'),
-          CustomCard(
-              topic: 'How to get a glowing skin',
-              subTopic:
-                  "A major component— and signal— of healthy skin is a natural glow. But causes like lack of sleep, stress",
-              pic: 'assets/images/fruits.jpg'),
+          ListView(
+            physics: AlwaysScrollableScrollPhysics(),
+            padding: EdgeInsets.all(30.0),
+            children: <Widget>[
+              CustomCard(
+                  topic: '12 of the best hip strenghtening exercises',
+                  subTopic:
+                      "The hips are one of those body parts that most of us don't really think about until "
+                      "they're...",
+                  pic: 'assets/images/run.jpg'),
+              CustomCard(
+                  topic: 'How to get a glowing skin',
+                  subTopic:
+                      "A major component— and signal— of healthy skin is a natural glow. But causes like lack of sleep, stress",
+                  pic: 'assets/images/fruits.jpg'),
 //          CustomCard(
 //            topic: "5 fruits you should eat for glowing skin",
 //            subTopic:
@@ -166,6 +179,59 @@ class _DashboardState extends State<Dashboard> {
 //                "Each year in the Good Housekeeping Institute Beauty Lab, we rigorously test skincare products, from moisturizers to cleansers...",
 //            pic: 'assets/images/pine.jpg',
 //          ),
+            ],
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              Text(
+                'Oops!',
+                style: TextStyle(fontFamily: 'Pacifico', fontSize: 40),
+              ),
+              Image.asset(
+                'assets/images/sad.png',
+                width: devWidth / 1.7,
+              ),
+              Text(
+                'Watch out for Logs page in Future updates',
+                style: TextStyle(fontSize: 16),
+              )
+            ],
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              Text(
+                'Oops!',
+                style: TextStyle(fontFamily: 'Pacifico', fontSize: 40),
+              ),
+              Image.asset(
+                'assets/images/sad.png',
+                width: devWidth / 1.7,
+              ),
+              Text(
+                'Watch out for Profile page in Future updates',
+                style: TextStyle(fontSize: 16),
+              )
+            ],
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              Text(
+                'Oops!',
+                style: TextStyle(fontFamily: 'Pacifico', fontSize: 40),
+              ),
+              Image.asset(
+                'assets/images/sad.png',
+                width: devWidth / 1.7,
+              ),
+              Text(
+                'Watch out for Settings page in Future updates',
+                style: TextStyle(fontSize: 16),
+              )
+            ],
+          )
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -279,3 +345,5 @@ class CustomCard extends StatelessWidget {
     );
   }
 }
+
+//TODO avatar changer
